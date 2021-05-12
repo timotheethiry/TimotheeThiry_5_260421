@@ -3,112 +3,79 @@ header {
   background-color: lightgray;
 }
 
-.grid-container {
+.pdt {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
   gap: 0px 0px;
 }
-
-.pdt-img {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 0px 0px;
-  grid-template-areas: ". . ." ". . .";
-  grid-area: 1/1/6/4;
+.pdt__img {
+  grid-area: 1/1/5/4;
 }
-
-.pdt-preview {
+.pdt__preview {
   width: 100%;
-  grid-area: 1/1/6/4;
 }
-
-.pdt-info {
+.pdt__info {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   gap: 0px 0px;
-  grid-template-areas: "pdt-ctg pdt-ctg pdt-price" "pdt-name pdt-name .";
+  grid-template-areas: "pdt__ctg pdt__ctg pdt__price" "pdt__name pdt__name .";
   grid-area: 1/4/2/6;
 }
-
-.pdt-ctg {
-  grid-area: pdt-ctg;
+.pdt__ctg {
+  grid-area: pdt__ctg;
 }
-
-.pdt-name {
-  grid-area: pdt-name;
+.pdt__name {
+  grid-area: pdt__name;
 }
-
-.pdt-price {
-  grid-area: pdt-price;
+.pdt__price {
+  grid-area: pdt__price;
 }
-
-.pdt-form {
+.pdt__form {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   gap: 0px 0px;
   grid-area: 2/4/4/6;
 }
-
-.pdt-fieldset {
-  grid-area: 1/1/2/4;
+.pdt__opt {
+  grid-area: 1/2/2/3;
+}
+.pdt__details {
+  grid-area: 4/4/5/6;
+}
+.pdt__description {
+  font-size: 18px;
+  text-align: justify;
+}
+.pdt__featured {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-template-areas: "pdt__feat pdt__feat pdt__feat pdt__feat";
+  grid-area: 5/1/7/6;
+}
+.pdt__feat {
+  padding: 5px;
 }
 
 .label {
   grid-area: 1/1/2/2;
 }
 
-.scroll-menu {
-  grid-area: 1/2/2/4;
-}
-
-.button-cart {
+.button__cart {
   grid-area: 2/1/3/4;
 }
 
-.button-fav {
+.button__fav {
   grid-area: 3/1/4/4;
 }
 
-.pdt-details {
-  grid-area: 4/4/6/6;
-}
-
-.pdt-description {
-  grid-area: 4/4/6/6;
-}
-
-.pdt-featured {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 0px 0px;
-  grid-template-areas: "pdt-feat2 pdt-feat2 pdt-feat3 pdt-feat3 pdt-feat4 pdt-feat4 pdt-feat5 pdt-feat5" "pdt-feat2 pdt-feat2 pdt-feat3 pdt-feat3 pdt-feat4 pdt-feat4 pdt-feat5 pdt-feat5";
-  grid-area: 6/1/8/6;
-}
-
-.pdt-feat2 {
-  grid-area: pdt-feat2;
-}
-
-.pdt-feat3 {
-  grid-area: pdt-feat3;
-}
-
-.pdt-feat4 {
-  grid-area: pdt-feat4;
-}
-
-.pdt-feat5 {
-  grid-area: pdt-feat5;
-}
-
 .feat {
-  height: 375px;
-  width: 378px;
+  height: 100%;
+  width: 100%;
   object-fit: cover;
 }
 

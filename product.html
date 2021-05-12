@@ -14,32 +14,33 @@
 <body>
   <header></header>
   
-  <div class="grid-container">
-    <div class="pdt-img">
-      <img class="pdt-preview" src="images/teddy_1.jpg">
+  <div class="pdt">
+    <div class="pdt__img">
+      <img class="pdt__preview" src="images/teddy_1.jpg">
     </div>
-    <div class="pdt-info">
-      <h2 class="pdt-ctg">Teddy bears</h2>
-      <h1 class="pdt-name">Georges</h1>
-      <div class="pdt-price">15</div>
+    <div class="pdt__info">
+      <h2 class="pdt__ctg">Teddy bear</h2>
+      <h1 class="pdt__name">Georges</h1>
+      <div class="pdt__price">15</div>
     </div>
 
-    <form class="pdt-form">
-      <div class="pdt-fieldset"></div>
-        <label class="label" for="pdt-opt">Color</label>
-        <select name="opt" id="pdt-opt" class="scroll-menu">
-          <option value="">Brown</option>
-          <option value="">Chocolate</option>
-          <option value="">Camel</option>
-          <option value="">Maroon</option>
-        </select>      
-        <input type="button" class="button-cart" value="Add to cart">
-        <input type="button" class="button-fav" value="Add to favorites">
+    <form class="pdt__form">
+        <div class="label"><label for="option">Color</label></div>
+        <div class="pdt__opt">
+          <select name="opt" id="option" class="">
+            <option value="">Brown</option>
+            <option value="">Chocolate</option>
+            <option value="">Camel</option>
+            <option value="">Maroon</option>
+          </select>
+        </div>     
+        <div class="button__cart" ><input type="button" value="Add to cart"></div>
+        <div class="button__fav"><input type="button" value="Add to favorites"></div>
       
     </form>
 
-    <div class="pdt-details">
-      <p class="pdt-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+    <div class="pdt__details">
+      <p class="pdt__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
 Aliquam auctor rutrum est, sed vulputate urna suscipit finibus. 
 Integer pharetra urna rutrum urna ultrices, sed commodo leo pulvinar. 
 Nunc sed vehicula tellus. Morbi et eleifend orci. Aenean turpis erat, 
@@ -47,11 +48,11 @@ laoreet a posuere vitae, lobortis at magna. Curabitur in leo nulla.
 Nam vel dui sed dui pretium pulvinar nec id ex. </p>
     </div>
     
-    <div class="pdt-featured">
-      <div class="pdt-feat2"><img class="feat" src="./images/teddy_2.jpg"></div>
-      <div class="pdt-feat3"><img class="feat" src="./images/teddy_3.jpg"></div>
-      <div class="pdt-feat4"><img class="feat" src="./images/teddy_4.jpg"></div>
-      <div class="pdt-feat5"><img class="feat" src="./images/teddy_5.jpg"></div>
+    <div class="pdt__featured">
+      <div class="pdt__feat"><img class="feat" src="./images/teddy_2.jpg"></div>
+      <div class="pdt__feat"><img class="feat" src="./images/teddy_3.jpg"></div>
+      <div class="pdt__feat"><img class="feat" src="./images/teddy_4.jpg"></div>
+      <div class="pdt__feat"><img class="feat" src="./images/teddy_5.jpg"></div>
     </div>
   </div>
 
