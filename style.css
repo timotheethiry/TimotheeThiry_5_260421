@@ -1,0 +1,99 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+}
+
+.pdt-img {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas: ". . ." ". . .";
+  grid-area: 1/1/6/4;
+}
+
+.pdt-Info {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas: "pdt-ctg pdt-ctg pdt-price" "pdt-name pdt-name .";
+  grid-area: 1/4/2/6;
+}
+
+.pdt-ctg {
+  grid-area: pdt-ctg;
+}
+
+.pdt-name {
+  grid-area: pdt-name;
+}
+
+.pdt-price {
+  grid-area: pdt-price;
+}
+
+.pdt-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-area: 2/4/4/6;
+}
+
+.Pdt-fieldset {
+  grid-area: 1/1/2/4;
+}
+
+.label {
+  grid-area: 1/1/2/2;
+}
+
+.scroll-menu {
+  grid-area: 1/2/2/4;
+}
+
+.button-cart {
+  grid-area: 2/1/3/4;
+}
+
+.button-fav {
+  grid-area: 3/1/4/4;
+}
+
+.Pdt-details {
+  grid-area: 4/4/6/6;
+}
+
+.pdt-description {
+  grid-area: 4/4/6/6;
+}
+
+.pdt-featured {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas: "pdt-feat1 pdt-feat1 pdt-feat2 pdt-feat2 pdt-feat3 pdt-feat3 pdt-feat4 pdt-feat4" "pdt-feat1 pdt-feat1 pdt-feat2 pdt-feat2 pdt-feat3 pdt-feat3 pdt-feat4 pdt-feat4";
+  grid-area: 6/1/8/6;
+}
+
+.pdt-feat1 {
+  grid-area: pdt-feat1;
+}
+
+.pdt-feat2 {
+  grid-area: pdt-feat2;
+}
+
+.pdt-feat3 {
+  grid-area: pdt-feat3;
+}
+
+.pdt-feat4 {
+  grid-area: pdt-feat4;
+}
+
+/*# sourceMappingURL=style.css.map */
