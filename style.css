@@ -1,3 +1,8 @@
+header {
+  height: 100px;
+  background-color: lightgray;
+}
+
 .grid-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -14,7 +19,12 @@
   grid-area: 1/1/6/4;
 }
 
-.pdt-Info {
+.pdt-preview {
+  width: 100%;
+  grid-area: 1/1/6/4;
+}
+
+.pdt-info {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
@@ -43,7 +53,7 @@
   grid-area: 2/4/4/6;
 }
 
-.Pdt-fieldset {
+.pdt-fieldset {
   grid-area: 1/1/2/4;
 }
 
@@ -63,7 +73,7 @@
   grid-area: 3/1/4/4;
 }
 
-.Pdt-details {
+.pdt-details {
   grid-area: 4/4/6/6;
 }
 
@@ -76,12 +86,8 @@
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   gap: 0px 0px;
-  grid-template-areas: "pdt-feat1 pdt-feat1 pdt-feat2 pdt-feat2 pdt-feat3 pdt-feat3 pdt-feat4 pdt-feat4" "pdt-feat1 pdt-feat1 pdt-feat2 pdt-feat2 pdt-feat3 pdt-feat3 pdt-feat4 pdt-feat4";
+  grid-template-areas: "pdt-feat2 pdt-feat2 pdt-feat3 pdt-feat3 pdt-feat4 pdt-feat4 pdt-feat5 pdt-feat5" "pdt-feat2 pdt-feat2 pdt-feat3 pdt-feat3 pdt-feat4 pdt-feat4 pdt-feat5 pdt-feat5";
   grid-area: 6/1/8/6;
-}
-
-.pdt-feat1 {
-  grid-area: pdt-feat1;
 }
 
 .pdt-feat2 {
@@ -94,6 +100,21 @@
 
 .pdt-feat4 {
   grid-area: pdt-feat4;
+}
+
+.pdt-feat5 {
+  grid-area: pdt-feat5;
+}
+
+.feat {
+  height: 375px;
+  width: 378px;
+  object-fit: cover;
+}
+
+footer {
+  height: 200px;
+  background-color: lightgray;
 }
 
 /*# sourceMappingURL=style.css.map */
