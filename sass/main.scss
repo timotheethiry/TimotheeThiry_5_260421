@@ -1,7 +1,42 @@
 // variables
 
+$breakpoints: (
+  mobile: 599px,
+  tablet: 999px
+);
+
+// functions
+
+// mixins
+
+@mixin mobile {
+  @media screen and (max-width: map-get($breakpoints, mobile)) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (max-width: map-get($breakpoints, tablet)) {
+    @content;
+  }
+}
+
+// base
+
+a {
+  text-decoration: none;
+  &:visited {
+    color: unset;
+  }
+}
+
+// typography
+
+// components
+
 // layouts
 
+// header common layout 
 .header
 {
   //height: 100px;
@@ -23,14 +58,7 @@
   }
 }
 
-a {
-  text-decoration: none;
-  &:visited {
-    color: unset;
-  }
-}
-
-//page view
+//page view layout
 
 .parent 
 {
@@ -125,7 +153,7 @@ a {
   {
     grid-area: pdt__price;
   }
-  &__form
+  &__form // to separate as a layout ?
   {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;

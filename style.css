@@ -1,3 +1,10 @@
+a {
+  text-decoration: none;
+}
+a:visited {
+  color: unset;
+}
+
 .header {
   background-color: lightgray;
 }
@@ -12,13 +19,6 @@
 }
 .header__push {
   margin-left: auto;
-}
-
-a {
-  text-decoration: none;
-}
-a:visited {
-  color: unset;
 }
 
 .parent {
