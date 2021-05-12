@@ -24,14 +24,13 @@ a:visited {
 .parent {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(6, 1fr);
+  grid-template-rows: 100px repeat(4, 1fr) 150px;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
 }
 @media screen and (max-width: 599px) {
   .parent {
     grid-template-columns: 1fr;
-    grid-template-rows: 100px repeat(4, 1fr) 200px;
   }
 }
 
