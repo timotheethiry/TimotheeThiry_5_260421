@@ -1,7 +1,33 @@
-header 
+// variables
+
+// layouts
+
+.header
 {
-  height: 100px;
+  //height: 100px;
   background-color: lightgray;
+  &__ul
+  {
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+    margin: 1rem;
+  }
+  &__li
+  {
+    margin: 0 1rem;
+  }
+  &__push
+  {
+    margin-left: auto;
+  }
+}
+
+a {
+  text-decoration: none;
+  &:visited {
+    color: unset;
+  }
 }
 
 //page view
@@ -17,9 +43,10 @@ header
   
 .div1
 {
-  grid-area: 1 / 1 / 2 / 6;
+  grid-area: 1 / 1 / 1 / 6;
   height: unset; 
 }
+
 .div2 
 { 
   display: grid;

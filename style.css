@@ -1,6 +1,24 @@
-header {
-  height: 100px;
+.header {
   background-color: lightgray;
+}
+.header__ul {
+  display: flex;
+  list-style: none;
+  padding-left: 0;
+  margin: 1rem;
+}
+.header__li {
+  margin: 0 1rem;
+}
+.header__push {
+  margin-left: auto;
+}
+
+a {
+  text-decoration: none;
+}
+a:visited {
+  color: unset;
 }
 
 .parent {
@@ -12,7 +30,7 @@ header {
 }
 
 .div1 {
-  grid-area: 1/1/2/6;
+  grid-area: 1/1/1/6;
   height: unset;
 }
 
