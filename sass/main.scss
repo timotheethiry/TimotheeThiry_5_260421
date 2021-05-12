@@ -1,5 +1,26 @@
 // variables
 
+$breakpoints: (
+  mobile: 599px,
+  tablet: 999px
+);
+
+// functions
+
+// mixins
+
+@mixin mobile {
+  @media screen and (max-width: map-get($breakpoints, mobile)) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (max-width: map-get($breakpoints, tablet)) {
+    @content;
+  }
+}
+
 // layouts
 
 .header
@@ -36,9 +57,12 @@ a {
 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(6, 1fr);
+  grid-template-rows: 100px repeat(4, 1fr) 150px;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
 }
   
 .div1
@@ -50,7 +74,10 @@ a {
 .div2 
 { 
   display: grid;
-  grid-area: 2 / 1 / 6 / 6; 
+  grid-area: 2 / 1 / 6 / 6;
+  @include mobile {
+    display: block;
+  } 
 }
 .div7 
 { 
