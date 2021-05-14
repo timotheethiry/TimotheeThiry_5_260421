@@ -44,6 +44,33 @@ a:visited {
   font-size: 25px;
 }
 
+.hero {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom: solid 2px #868b8e;
+}
+@media screen and (max-width: 599px) {
+  .hero {
+    padding: 0 1.5rem;
+  }
+}
+.hero__heading {
+  text-transform: uppercase;
+  font-size: 28px;
+  margin-top: 0;
+}
+@media screen and (max-width: 599px) {
+  .hero__heading {
+    font-size: 24px;
+  }
+}
+.hero__p {
+  font-size: 18px;
+  margin: 0;
+}
+
 .footer {
   background-color: #fff;
   border-top: solid 2px #868b8e;
