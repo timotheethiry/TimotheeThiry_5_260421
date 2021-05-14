@@ -21,6 +21,17 @@ a:visited {
   color: unset;
 }
 
+.view {
+  text-align: center;
+}
+.view__item {
+  margin: 10px;
+}
+.view__name {
+  color: black;
+  margin: 0;
+}
+
 .parent {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

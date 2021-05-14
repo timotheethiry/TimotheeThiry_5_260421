@@ -51,6 +51,24 @@ a {
   }
 }
 
+
+// view list layout
+
+.view
+{
+  text-align: center;
+  &__item
+  {
+    margin: 10px;
+  }
+  &__name
+  {
+    color: black;
+    margin: 0;
+  }
+}
+
+
 //page view
 
 .parent 
