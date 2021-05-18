@@ -4,13 +4,15 @@
         <meta charset="utf-8">
         <title>View page</title>
         <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <link rel="stylesheet" href="./style.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
 
-    <body class="parent">
-        <header class="div1 header">
+    <body class="container-fluid parent">
+        <header class="row header">
             <nav class="header__nav">
                 <ul class="header__ul">
                     <li class="header__li"><a class="" href="index.html">Orinoco</a></li>
@@ -20,37 +22,37 @@
             </nav>
         </header>
         
-        <div class="div2 hero">
+        <div class="row hero">
             <h1 class="hero__heading">Découvrez nos peluches faits-mains</h1>
             <p class="hero__p">Faites-nous confiance pour offrir un univers de tendresse aux petits comme aux grands</p>
         </div>
 
-        <section class="div3 view">
-            <article class="div4 view__item">
+        <section class="row view">
+            <article class="col-md-6 col-xl-4 view__item">
                 <a class="view__link" href="product_1.html">
                     <img class="view__img" src="images/teddy_1.jpg">
-                    <p class="view__name">Norbert</p>
+                    <p class="view__name">Norbert 30&euro;</p>
                 </a>   
             </article>
-            <article class="div5 view__item">
+            <article class="col-md-6 col-xl-4 view__item">
                 <a class="view__link" href="product_2.html">
                     <img class="view__img" src="images/teddy_2.jpg">
-                    <p class="view__name">Arnold</p>
+                    <p class="view__name">Arnold 25&euro;</p>
                 </a>
             </article>
-            <article class="div6 view__item">
+            <article class="col-md-6 col-xl-4 view__item">
                 <a class="view__link" href="product_3.html">
                     <img class="view__img view__img--left" src="images/teddy_3.jpg">
                     <p class="view__name">Lenny et Carl</p>
                 </a>
             </article>
-            <article class="div7 view__item">
+            <article class="col-md-6 col-xl-4 view__item">
                 <a class="view__link" href="product_4.html">
                     <img class="view__img" src="images/teddy_4.jpg">
                     <p class="view__name">Gustav</p>
                 </a>
             </article>
-            <article class="div8 view__item">
+            <article class="col col-xl-4 view__item">
                 <a class="view__link" href="product_5.html">
                     <img class="view__img view__img--center" src="images/teddy_5.jpg">
                     <p class="view__name">Garfunkel</p>
@@ -58,9 +60,10 @@
             </article>
         </section>
             
-        <footer class="div9 footer">
-            <div class="footer__brand">
-                <p class="footer__p">&reg Orinoco</p>
+        <footer class="container-fluid footer">
+            <div class="row footer__content">
+                <div class="footer__brand">
+                <p class="footer__p">&reg Orinoco 2021</p>
                 <p class="footer__p">All rights reserved</p>
                 <aside class="footer__socials">
                     <a href="https://twitter.com/home?lang=fr"><span class="fab fa-twitter"></span></a>
@@ -76,6 +79,7 @@
                     <li class="footer__li"><a href="#">Politique de confidentialité</a></li>
                     <li class="footer__li"><a href="#">Sitemap</a></li>
                 </ul>
+            </div>
             </div>
         </footer>
     </body>
