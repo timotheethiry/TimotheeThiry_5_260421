@@ -299,7 +299,7 @@ a {
       }
       &.pdt__img
       {
-        @include xl
+        @include lg
         {
           padding: 0 2.5rem;
         }
@@ -331,23 +331,27 @@ a {
       height: 100%;
       max-width: 400px;
       max-height: 400px;
-      box-shadow: none;
+      &--noshadow
+      {
+        box-shadow: none;
+      }
     }
     @include lg 
     {
       max-height: 600px;
       max-width: 600px;
+      
     }
     @include xl
     {
       max-height: none;
       max-width: none;
-     box-shadow: 1px 2px 5px lightgray;
+      &--noshadow
+      {
+        box-shadow: 1px 2px 5px lightgray;
+      }
     }
-    &--noshadow
-    {
-      box-shadow: none;
-    }
+    
   }
   &__info 
   {

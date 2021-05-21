@@ -5,32 +5,42 @@
 
     <title>Product 5</title>
     <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
 
-  <body>
-    <header>
-      <a href="index.html">Home</a>
-      <a href="#"><span>S'inscrire</span></a>
-      <a href="cart.html"><span class="fas fa-shopping-bag"></span></a>
+  <body class="container-fluid">
+    <header class="row header">
+        <nav class="header__nav">
+            <ul class="header__ul">
+                <li class="header__li"><a class="" href="index.html">Orinoco</a></li>
+                <li class="header__li header__li--push"><a href="#"><span class="">S'inscrire</span></a></li>
+                <li class="header__li header__li--cart"><a href="cart.html"><span class="fas fa-shopping-bag"></span></a></li>
+            </ul>
+        </nav>
     </header>
     
-    <div class="pdt">
-      <div class="pdt__img">
+    <main class="row pdt">
+      <div class="col-md-6 pdt__img pdt__img--big">
         <img class="pdt__preview" src="images/teddy_5.jpg">
       </div>
-      <div class="pdt__info">
-        <h2 class="pdt__ctg">Handmade teddy bears</h2>
-        <h1 class="pdt__name">Georges</h1>
-        <div class="pdt__price">15</div>
-      </div>
+      <section class="col-md-6 pdt__content">
+        <div class="row pdt__info">
+          <div class="col-8"><h2 class="pdt__ctg">Handmade teddy bear</h2></div>
+          <div class="col-4"><p class="pdt__price">15&euro;</p></div>
+          <div class="col"><h1 class="pdt__name">Georges</h1></div>
+        </div>
 
-      <form class="pdt__form">
-          <div class="label"><label for="option">Color</label></div>
-          <div class="pdt__opt">
+        <div class="col pdt__img pdt__img--small">
+          <img class="pdt__preview" src="images/teddy_5.jpg">
+        </div>
+        
+        <form class="row pdt__form">
+          <div class="col-2 pdt__label"><label for="option">Color</label></div>
+          <div class="col-4 pdt__opt">
             <select name="opt" id="option" class="">
               <option value="">Brown</option>
               <option value="">Chocolate</option>
@@ -38,29 +48,66 @@
               <option value="">Maroon</option>
             </select>
           </div>     
-          <div class="button__cart" ><input type="button" value="Add to cart"></div>
-          <div class="button__fav"><input type="button" value="Add to favorites"></div>
+          <div class="col-12 pdt__cart">
+            <button type="button">Add to cart</button>
+          </div>
+          <div class="col-12 pdt__fav">
+            <button type="button">Add to favorites</button>
+          </div>
+        </form>
         
-      </form>
+        <div class="row pdt__details">
+          <p class="col pdt__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+          Aliquam auctor rutrum est, sed vulputate urna suscipit finibus. 
+          Integer pharetra urna rutrum urna ultrices, sed commodo leo pulvinar. 
+          Nunc sed vehicula tellus. Morbi et eleifend orci. Aenean turpis erat, 
+          laoreet a posuere vitae, lobortis at magna. Curabitur in leo nulla. 
+          Nam vel dui sed dui pretium pulvinar nec id ex. </p>
+        </div>
+      </section>
 
-      <div class="pdt__details">
-        <p class="pdt__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-Aliquam auctor rutrum est, sed vulputate urna suscipit finibus. 
-Integer pharetra urna rutrum urna ultrices, sed commodo leo pulvinar. 
-Nunc sed vehicula tellus. Morbi et eleifend orci. Aenean turpis erat, 
-laoreet a posuere vitae, lobortis at magna. Curabitur in leo nulla. 
-Nam vel dui sed dui pretium pulvinar nec id ex. </p>
-      </div>
-      
-      <div class="pdt__featured">
-        <div class="pdt__feat"><a href="product_1.html"><img class="feat" src="./images/teddy_1.jpg"></a></div>
-        <div class="pdt__feat"><a href="product_2.html"><img class="feat" src="./images/teddy_2.jpg"></a></div>
-        <div class="pdt__feat"><a href="product_3.html"><img class="feat" src="./images/teddy_3.jpg"></a></div>
-        <div class="pdt__feat"><a href="product_4.html"><img class="feat" src="./images/teddy_4.jpg"></a></div>
-      </div>
+    </main>
+
+    <div class="row feat">
+      <h3 class="col-12 feat__heading">Encore un peu de tendresse</h3>
+        <div class="col-sm-5 col-lg-3 feat__item">
+          <a href="product_1.html"><img class="feat__img" src="./images/teddy_1.jpg"></a>
+        </div>
+        <div class="col-sm-5 col-lg-3 feat__item">
+          <a href="product_2.html"><img class="feat__img" src="./images/teddy_2.jpg"></a>
+        </div>
+        <div class="col-sm-5 col-lg-3 feat__item">
+          <a href="product_3.html"><img class="feat__img feat__img--left" src="./images/teddy_3.jpg"></a>
+        </div>
+        <div class="col-sm-5 col-lg-3 feat__item">
+          <a href="product_4.html"><img class="feat__img" src="./images/teddy_4.jpg"></a>
+        </div>
     </div>
 
-    <footer></footer>
+    <footer class="container-fluid footer">
+      <div class="row footer__content">
+        <div class="footer__brand">
+          <p class="footer__p">&reg Orinoco 2021</p>
+          <p class="footer__p">All rights reserved</p>
+
+          <aside class="footer__socials">
+            <a href="https://twitter.com/home?lang=fr"><span class="fab fa-twitter"></span></a>
+            <a href="https://www.instagram.com/?hl=fr"><span class="fab fa-instagram"></span></a>
+            <a href="https://fr-fr.facebook.com/"><span class="fab fa-facebook-f"></span></a>
+          </aside>
+        </div>
+
+        <div class="footer__links">
+            <h3 class="footer__heading">Liens utiles</h3>
+            <ul class="footer__ul">
+                <li class="footer__li"><a href="#">À propos</a></li>
+                <li class="footer__li"><a href="#">Nous contacter</a></li>
+                <li class="footer__li"><a href="#">Politique de confidentialité</a></li>
+                <li class="footer__li"><a href="#">Sitemap</a></li>
+            </ul>
+        </div>
+      </div>
+    </footer>
 
     <!--<script src=""></script><!-->
   </body>
