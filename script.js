@@ -42,6 +42,22 @@ function displayDesc(arg) {
 }
 
 
+// display item options
+
+const optionsList = document.getElementsByClassName("option-list");
+
+function displayOptions(arg) {
+  itemOptions = arg.colors;
+  for (i = 0; i < optionsList.length; i++) {
+    optionsList[i].value = itemOptions[i];
+    optionsList[i].textContent = itemOptions[i];
+    if (optionsList[i].textContent == "") {
+      optionsList[i].setAttribute("hidden", true);
+    }
+  }
+}
+
+
 //get page param
 
 let urlParams;
@@ -72,6 +88,7 @@ function displayItem() {
     displayName(value);
     displayPrice(value);
     displayDesc(value);
+    displayOptions(value);
     })
     .catch(function (error) {
       // code erreur
