@@ -2,12 +2,18 @@
 
 // display item img
 
-const productImg = document.getElementById("product__img");
+const productImg = document.querySelectorAll(".pdt__preview");
 let itemImg;
 
 function displayImg(arg) {
   itemImg = arg.imageUrl;
-  productImg.setAttribute("src", itemImg);
+  productImg[0].setAttribute("src", itemImg);
+  productImg[1].setAttribute("src", itemImg);
+  if (pageParam == "5beaaa8f1c9d440000a57d95") {
+    productImg[0].style.objectPosition = "left";
+    productImg[0].style.minWidth = "350px";
+    productImg[1].style.objectPosition = "left";
+  }
 }
 
 // display item name
@@ -30,6 +36,7 @@ function displayPrice(arg) {
   productPrice.textContent = itemPrice + ' ' + '\u20AC';
 }
 
+// display item options
 
 //display item description
 
@@ -69,9 +76,9 @@ function displayItem() {
     })
     .then(function (value) {
       displayImg(value);
-    displayName(value);
-    displayPrice(value);
-    displayDesc(value);
+      displayName(value);
+      displayPrice(value);
+      displayDesc(value);
     })
     .catch(function (error) {
       // code erreur
