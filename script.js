@@ -103,12 +103,53 @@ function storeCart() {
 }
 
 
+// display cart length
+
+function checkCart() {
+  getCart();
+  document.querySelector('.header__cart-length').textContent = cart.length;
+  if (!cart.length) {
+    document.getElementById('rmv-btn').setAttribute('disabled', true);
+    document.querySelector('.header__cart-length').style.visibility = 'hidden';
+  } else {
+    document.querySelector('.header__cart-length').style.visibility = 'visible';
+  }
+  if (cart.length >= 10) {
+    document.querySelector('.header__cart-length').setAttribute('border-radius', '4px');
+    document.querySelector('.header__cart-length').setAttribute('padding', '1px 0 0 2px');
+  } else if (cart.length >= 100) {
+    document.querySelector('.header__cart-length').setAttribute('heigth', '20px');
+    document.querySelector('.header__cart-length').setAttribute('padding', '3.5px 5px 0 5px');
+    document.querySelector('.header__cart-length').setAttribute('border-radius', '4px');
+  }
+}
+
+checkCart();
+
+
 // add to cart
 
 document.getElementById('add-btn').addEventListener('click', function() { 
   getCart();
   getPageParam();
   cart.push(pageParam);
-  console.log(cart);
   storeCart();
+  document.getElementById('rmv-btn').removeAttribute('disabled');
+  checkCart();
+});
+
+
+// remove from cart
+
+let ind;
+
+document.getElementById('rmv-btn').addEventListener('click', function(str){
+  getCart();
+  getPageParam();
+  ind = cart.indexOf(pageParam);
+  if (ind > -1) {
+    cart.splice(ind, 1);
+  }
+  storeCart();
+  checkCart();
 });
