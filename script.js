@@ -2,7 +2,7 @@
 
 // display item img
 
-let productImg = document.getElementById("product__img");
+const productImg = document.getElementById("product__img");
 let itemImg;
 
 function displayImg(arg) {
@@ -12,7 +12,7 @@ function displayImg(arg) {
 
 // display item name
 
-let productName = document.getElementById('product__name');
+const productName = document.getElementById('product__name');
 let itemName;
 
 function displayName(arg) {
@@ -22,7 +22,7 @@ function displayName(arg) {
 
 // display item price
 
-let productPrice = document.getElementById('product__price');
+const productPrice = document.getElementById('product__price');
 let itemPrice;
 
 function displayPrice(arg) {
@@ -33,7 +33,7 @@ function displayPrice(arg) {
 
 //display item description
 
-let productDesc = document.getElementById('product__description');
+const productDesc = document.getElementById('product__description');
 let itemDesc;
 
 function displayDesc(arg) {
@@ -103,31 +103,70 @@ function storeCart() {
 }
 
 
-// display cart length
+// handle cart length
+
+const cartIconLength = document.querySelector('.header__cart-length');
+
+function displayCartIcon() {
+  if (!cart.length) {
+    cartIconLength.style.visibility = 'hidden';
+  } else {
+    cartIconLength.style.visibility = 'visible';
+  }
+}
+
+function modifyCartIcon() {
+  if (cart.length < 10) {
+    cartIconLength.style.borderRadius = "10px";
+    cartIconLength.style.height = "$hg-cart";
+    cartIconLength.style.padding = "1.5px 0 0 5px";
+  } else if (cart.length >= 10) {
+    cartIconLength.style.borderRadius = '4px';
+    cartIconLength.style.padding = '1px 0 0 2px';
+  } else if (cart.length >= 100) {
+    cartIconLength.style.heigth = '20px';
+    cartIconLength.style.padding = '3.5px 5px 0 5px';
+    cartIconLength.style.borderRadius = '4px';
+  }
+}
 
 function checkCart() {
   getCart();
-  document.querySelector('.header__cart-length').textContent = cart.length;
-  if (!cart.length) {
-    document.getElementById('rmv-btn').setAttribute('disabled', true);
-    document.querySelector('.header__cart-length').style.visibility = 'hidden';
-  } else {
-    document.querySelector('.header__cart-length').style.visibility = 'visible';
-  }
-  if (cart.length >= 10) {
-    document.querySelector('.header__cart-length').setAttribute('border-radius', '4px');
-    document.querySelector('.header__cart-length').setAttribute('padding', '1px 0 0 2px');
-  } else if (cart.length >= 100) {
-    document.querySelector('.header__cart-length').setAttribute('heigth', '20px');
-    document.querySelector('.header__cart-length').setAttribute('padding', '3.5px 5px 0 5px');
-    document.querySelector('.header__cart-length').setAttribute('border-radius', '4px');
-  }
+  cartIconLength.textContent = cart.length;
+  displayCartIcon();
+  modifyCartIcon();
+  handleRemoveButton();
 }
 
 checkCart();
 
 
-// add to cart
+// handle remove button
+
+
+function getIndexOfElement() {
+  return ind = cart.indexOf(pageParam);
+}
+
+function handleRemoveButton() {
+  getCart();
+  getIndexOfElement();
+  if (document.getElementById('rmv-btn') != null && !cart.length || ind == -1) {
+    document.getElementById('rmv-btn').setAttribute('disabled', true);
+  }
+}
+
+// remove 1 element
+
+function removeElement() {
+  getIndexOfElement();
+  if (ind > -1) {
+    cart.splice(ind, 1);
+  }
+}
+
+
+// event add to cart
 
 document.getElementById('add-btn').addEventListener('click', function() { 
   getCart();
@@ -139,17 +178,13 @@ document.getElementById('add-btn').addEventListener('click', function() {
 });
 
 
-// remove from cart
-
-let ind;
+// event remove from cart
 
 document.getElementById('rmv-btn').addEventListener('click', function(str){
   getCart();
   getPageParam();
-  ind = cart.indexOf(pageParam);
-  if (ind > -1) {
-    cart.splice(ind, 1);
-  }
+  removeElement();
   storeCart();
+  handleRemoveButton();
   checkCart();
 });
