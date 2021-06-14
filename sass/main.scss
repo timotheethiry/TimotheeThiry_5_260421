@@ -10,6 +10,9 @@ $breakpoints: (
 $prm-color: #868b8e;
 $w-color: #fff;
 
+$wd-cart: 16px;
+$hg-cart: $wd-cart;
+
 // functions
 
 // mixins
@@ -97,7 +100,7 @@ a {
     @include sm {
       margin: 0 1.5rem;
     }
-    &--push
+    &--right
     {
       margin-left: auto;
     }
@@ -105,7 +108,25 @@ a {
     {
       font-size: 25px;
     }
-  }  
+  }
+  &__cart-icon
+  {
+    position: relative; // reference for inner element but not relative to parent element
+  }
+  &__cart-length
+  {
+    display: inline-block;
+    min-width: $wd-cart;
+    height: $hg-cart;
+    border-radius: 10px;
+    background-color: #FF9F1C;
+    color: $w-color;
+    position: relative;
+    top: 8px;
+    left: -9px;
+    font-size: 12px;
+    padding: 1.5px 0 0 5px;
+  }
 }
 
 

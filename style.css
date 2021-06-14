@@ -45,11 +45,27 @@ a:visited {
     margin: 0 1.5rem;
   }
 }
-.header__li--push {
+.header__li--right {
   margin-left: auto;
 }
 .header__li--cart {
   font-size: 25px;
+}
+.header__cart-icon {
+  position: relative;
+}
+.header__cart-length {
+  display: inline-block;
+  min-width: 16px;
+  height: 16px;
+  border-radius: 10px;
+  background-color: #FF9F1C;
+  color: #fff;
+  position: relative;
+  top: 8px;
+  left: -9px;
+  font-size: 12px;
+  padding: 1.5px 0 0 5px;
 }
 
 .hero {
