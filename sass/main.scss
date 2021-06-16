@@ -1,27 +1,49 @@
 // variables
 
-// layouts
+$breakpoints: (
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+);
 
-.header
-{
-  //height: 100px;
-  background-color: lightgray;
-  &__ul
-  {
-    display: flex;
-    list-style: none;
-    padding-left: 0;
-    margin: 1rem;
-  }
-  &__li
-  {
-    margin: 0 1rem;
-  }
-  &__push
-  {
-    margin-left: auto;
+$prm-color: #868b8e;
+$snd-color: #FF9F1C;
+$g-color: #07bd2e;
+$w-color: #fff;
+
+$wd-cart: 16px;
+$hg-cart: $wd-cart;
+
+// functions
+
+// mixins
+
+@mixin sm {
+  @media screen and (min-width: map-get($breakpoints, sm)) {
+    @content;
   }
 }
+
+@mixin md {
+  @media screen and (min-width: map-get($breakpoints, md)) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media screen and (min-width: map-get($breakpoints, lg)) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media screen and (min-width: map-get($breakpoints, xl)) {
+    @content;
+  }
+}
+
+// base
 
 a {
   text-decoration: none;
@@ -30,163 +52,468 @@ a {
   }
 }
 
-//page view
+// typography (base)
 
-.parent 
+// components
+
+
+
+
+// layouts
+
+
+// header common layout 
+.header
 {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(6, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-}
-  
-.div1
-{
-  grid-area: 1 / 1 / 1 / 6;
-  height: unset; 
+  //height: 100px; défini par la grille
+  background-color: white;
+  display: flex;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-bottom: solid 2px $prm-color;
+  color: darken($color: $prm-color, $amount: 15%);
+  &.row 
+  {
+    margin: 0; // border length
+  }
+  &__nav
+  {
+    width: 100%;
+    margin: auto 0;
+    @include sm {
+      margin: auto 1rem;
+    }
+  }
+  &__ul
+  {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding-left: 0;
+    margin: 1rem 0;
+    @include sm
+    {
+      margin: 1rem 0;
+    }
+  }
+  &__li
+  {
+    margin: 0 1rem;
+    @include sm {
+      margin: 0 1.5rem;
+    }
+    &--right
+    {
+      margin-left: auto;
+    }
+    &--cart
+    {
+      font-size: 25px;
+    }
+  }
+  &__cart-icon
+  {
+    position: relative; // reference for inner element but not relative to parent element
+  }
+  &__cart-length
+  {
+    display: inline-block;
+    min-width: $wd-cart;
+    height: $hg-cart;
+    border-radius: 10px;
+    background-color: $snd-color;
+    color: $w-color;
+    position: relative;
+    top: 8px;
+    left: -9px;
+    font-size: 12px;
+    padding: 1.5px 0 0 5px;
+  }
 }
 
-.div2 
-{ 
-  display: grid;
-  grid-area: 2 / 1 / 6 / 6; 
-}
-.div7 
-{ 
-  grid-area: 6 / 1 / 7 / 6; 
-  height: unset;
-}
-.div3 
-{ 
-  grid-area: 2 / 1 / 4 / 3;
-  padding: 10px;
-}
-.div5 
-{ 
-  grid-area: 4 / 1 / 6 / 3;
-  padding: 10px; 
-}
-.div4 
-{ 
-  grid-area: 2 / 3 / 4 / 5;
-  padding: 10px;
-}
-.div6 
-{ 
-  grid-area: 4 / 3 / 6 / 5;
-  padding: 10px; 
+
+// hero layout
+
+.hero
+{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom: solid 2px $prm-color;
+  margin: 2rem auto auto;
+  padding: 0 1.5rem;
+  @include sm
+  {
+    margin: 2.5rem auto auto
+  }
+  &.row // border length
+  {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  &__heading
+  {
+    text-transform: uppercase;
+    font-size: 24px;
+    margin-top: 0;
+    @include md
+    {
+      font-size: 28px;
+    }
+  }
+  &__p
+  {
+    font-size: 18px;
+    margin: 0 auto 2rem;
+    max-width: 480px;
+    @include sm
+    {
+      margin: 0 auto 2.5rem; 
+    }
+  }
 }
 
-.view__img
+
+// view list layout
+
+.view
 {
-  width: 100%;
-  height: 100%;
-  object-fit: fill;
-  box-shadow: 1px 2px 5px lightgray;
+  text-align: center;
+  margin: 1rem auto;
+  max-width: 800px;
+  @include sm {
+    margin: 1.5rem auto;
+  }
+  @include md
+  {
+    margin: 2rem auto;
+  }
+  @include xl
+  {
+    max-width: 1170px;
+    margin: 2.5rem auto;
+  }
+  &.row
+  {
+    @include md
+    {
+      margin-right: auto;
+      margin-left: auto;
+    }
+  }
+  &__item
+  {
+    margin: 10px;
+    @include md
+    {
+      margin: 1.5rem 0;
+    }
+    @include lg
+    {
+     &:nth-of-type(4n)
+      {
+        margin-left: auto;
+      }
+      &:nth-of-type(5n)
+      {
+        margin-right: auto;
+      } 
+    } 
+  }
+  &__name
+  {
+    color: black;
+    margin: 0;
+  }
+  &__img
+  {
+    width: 320px;
+    height: 320px;
+    object-fit: cover;
+    box-shadow: 1px 2px 5px lightgray;
+    &--left
+    {
+      object-position: left;
+    }
+    &--center
+    {
+      object-position: 10%;
+    }
+  }
+}
+
+
+// footer common layout
+
+.footer {
+  background-color: $w-color;
+  border-top: solid 2px $prm-color;
+  color: darken($color: $prm-color, $amount: 15%);
+  font-size: 14px;
+  text-align: center;
+  padding: 0.5rem;
+  @include sm {
+    padding: 1rem;
+  }
+  &__content.row 
+  {
+    margin: 0 auto;
+    max-width: 700px;
+    justify-content: space-around; // display flex from row class BS
+  }
+  &__brand
+  {
+    margin-top: 1rem;
+  }
+  &__p
+  {
+    margin: 0;
+  }
+  &__socials
+  {
+    margin-top: 0.5rem;
+    font-size: 25px;
+    display: flex;
+    justify-content: space-around;
+  }
+  &__links
+  {
+    margin-top: 1rem; 
+  }
+  &__heading
+  {
+    text-transform: uppercase;
+    margin: 0 0 0.8rem;
+    font-size: 14px;
+  }
+  &__ul
+  {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 0;
+    line-height: 1.4;
+  }
 }
 
 // page product
 
 .pdt 
 {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
-  gap: 0px 0px;
+  margin: 1.5rem 0;
+  @include md
+  {
+    margin: 2.5rem 0;
+    padding: 0 1rem;
+  }
   &__img 
   {
-    grid-area: 1 / 1 / 5 / 4;
+    text-align: center;
+    &--big
+    {
+      display: none;
+      @include md
+      {
+        display: inline;
+      }
+      @include xl 
+      {
+        height: 500px;
+      }
+      &.pdt__img
+      {
+        @include lg
+        {
+          padding: 0 2.5rem;
+        }
+      }
+    }
+    &--small
+    {
+      margin: 1.5rem 0 0;
+      @include md
+      {
+        display: none;
+      }
+    }
   }
   &__preview 
   {
-    width: 100%;
+    width: 320px;
+    height: 320px;
+    object-fit: cover;
+    box-shadow: 1px 2px 5px lightgray;
+    @include sm
+    {
+      width: 400px;
+      height: 400px;
+    }
+    @include md
+    {
+      width: 100%;
+      height: 100%;
+      max-width: 400px;
+      max-height: 400px;
+      &--noshadow
+      {
+        box-shadow: none;
+      }
+    }
+    @include lg 
+    {
+      max-height: 600px;
+      max-width: 600px;
+      
+    }
+    @include xl
+    {
+      max-height: none;
+      max-width: none;
+      &--noshadow
+      {
+        box-shadow: 1px 2px 5px lightgray;
+      }
+    }
+    
   }
   &__info 
   {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 0px 0px;
-    grid-template-areas:
-    "pdt__ctg pdt__ctg pdt__price"
-    "pdt__name pdt__name .";
-    grid-area: 1 / 4 / 2 / 6;
+    padding: 0 1rem;
+    @include sm
+    {
+      padding: 0 2.5rem;
+    }
+    @include md
+    {
+      padding: 0;
+    }
   }
   &__ctg 
   { 
-    grid-area: pdt__ctg; 
+    font-size: 18px;
   }
   &__name
   {
-    grid-area: pdt__name;
+    font-size: 28px;
   }
   &__price
   {
-    grid-area: pdt__price;
+    font-size: 18px;
+    margin-bottom: 0;
+    line-height: 1.2; // align with pdt__ctg line-height from BS;
+    text-align: end;
+    @include md()
+    {
+      text-align: center;
+    }
   }
-  &__form
+  &__form // to separate as a layout ?
   {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    gap: 0px 0px;
-    grid-area: 2 / 4 / 4 / 6;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    justify-content: center; // display flex from row class BS
   }
-  &__opt
+  &__label
   {
-    grid-area: 1 / 2 / 2 / 3;
+    margin-bottom: 1rem;
+  }
+  &__cart
+  {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  &__fav
+  {
+    text-align: center;
   }
   &__details
   {
-    grid-area: 4 / 4 / 5 / 6;
+    padding: 0 2rem;
+    @include md()
+    {
+      padding: 0 1.5rem 0 0;
+    }
   }
   &__description
   {
-    font-size: 18px;
     text-align: justify;
+    @include md
+    {
+      font-size: 18px;
+    }
   }
-  &__featured 
+}
+
+.feat
+{
+  margin: 4rem 0 2.5rem;
+  padding: 0 1rem;
+  justify-content: center; // display flex from row class BS
+  &__heading
   {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr;
-    gap: 0px 0px;
-    grid-template-areas:
-      "pdt__feat pdt__feat pdt__feat pdt__feat";
-    grid-area: 5 / 1 / 7 / 6;
+    font-size: 20px;
+    margin-bottom: 0.8rem;
+    @include sm
+    {
+      font-size: 22px;
+      margin-bottom: 1.5rem;
+    }
   }
-  &__feat
+  &__item
   {
     padding: 5px;
+    text-align: center;
+    margin: 0.5rem 0;
+  }
+  &__img
+  { 
+    height: 200px;
+    width: 200px; 
+    object-fit: cover;
+    box-shadow: 0px 0px 5px lightgray;
+    &--left
+    {
+      object-position: left;
+    }
+    &--center
+    {
+      object-position: 10%;
+    }
+  } 
+}
+
+
+
+// confirmation page
+
+.confirm
+{
+  margin: 3rem 0;
+  &__icon
+  {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    font-size: 200px;
+    color: $g-color;
+  }
+  &__heading
+  {
+    margin-top: 2rem;
+    font-size: 30px;
+    text-align: center;
+  }
+  &__total
+  {
+    margin-top: 1rem;
+    font-size: 22px;
+    text-align: center;
+  }
+  &__id
+  {
+    margin-top: 1rem;
+    font-size: 22px;
+    text-align: center;
   }
 }
-
-.label
-{
-  grid-area: 1 / 1 / 2 / 2;
-}
-
-.button__cart
-{
-  grid-area: 2 / 1 / 3 / 4;
-}
-
-.button__fav
-{
-  grid-area: 3 / 1 / 4 / 4;
-}
-
-.feat 
-{ 
-  height: 100%;
-  width: 100%; 
-  object-fit: cover;
-  box-shadow: 0px 0px 5px lightgray;
-}
-
-footer {
-  height: 200px;
-  background-color: lightgray;
-}
-  
+ 
