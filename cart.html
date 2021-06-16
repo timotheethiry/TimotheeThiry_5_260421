@@ -18,7 +18,7 @@
         <nav class="header__nav">
             <ul class="header__ul">
                 <li class="header__li"><a class="" href="index.html">Orinoco</a></li>
-                <li class="header__li header__li--push"><a href="#"><span class="">S'inscrire</span></a></li>
+                <li class="header__li header__li--right"><a href="#"><span class="">S'inscrire</span></a></li>
             </ul>
         </nav>
     </header>
@@ -81,14 +81,14 @@
         <h3>Livraison</h2>
         <form role="form">
           <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" class="form-control" name="name" id="name" maxlength="50" required>
-
-            <label for="firstname">Firstname</label>
+            <label for="fistname">Firstname</label>
             <input type="text" class="form-control" name="firstname" id="firstname" maxlength="50" required>
+
+            <label for="lastname">Lastname</label>
+            <input type="text" class="form-control" name="lastname" id="lastname" maxlength="50" required>
           
             <label for="email">Email</label>
-            <input type="email" class="form-control" name="email" id="email" placeholder="nom@exemple.com" patter="[a-zA-Z0-9_\-\.]@[a-zA-Z0-9_\-\.]\.[a-zA-Z]{2,5}" maxlength="50" required>
+            <input type="email" class="form-control" name="email" id="email" placeholder="user@domain.com" pattern="[a-zA-Z0-9][a-zA-Z0-9_\-\.]*@[a-zA-Z0-9][a-zA-Z0-9_\-\.]*\.[a-zA-Z]{2,5}" maxlength="50" required>
 
             <label for="address">Address</label>
             <input type="text" class="form-control" name="address" id="address" maxlength="50" required>
@@ -96,8 +96,8 @@
             <label for="city">City</label>
             <input type="text" class="form-control" name="city" id="city" maxlength="50" required>
 
-            <button type="submit">Commander</button>
           </div>
+          <button type="submit" name="submit" id="submit">Commander</button>
         </form>
 
         <!--<h3>Paiement</h3>
@@ -114,29 +114,6 @@
 
             <button type="submit">Payer</button>
         </form>-->
-        
-        <div id="card-916051">
-          <div class="card">
-            <div class="card-header">
-                <a class="card-link collapsed" data-toggle="collapse" data-parent="#card-916051" href="#card-element-535937">Collapsible Group Item #1</a>
-            </div>
-            <div id="card-element-535937" class="collapse">
-              <div class="card-body">
-                Anim pariatur cliche...
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header">
-                <a class="card-link collapsed" data-toggle="collapse" data-parent="#card-916051" href="#card-element-463949">Collapsible Group Item #2</a>
-            </div>
-            <div id="card-element-463949" class="collapse">
-              <div class="card-body">
-                Anim pariatur cliche...
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
       
     </main>
@@ -169,5 +146,3 @@
     <script src="cart.js"></script>
   </body>
 </html>
-
-
