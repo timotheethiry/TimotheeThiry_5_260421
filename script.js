@@ -33,7 +33,7 @@ let itemPrice;
 
 function displayPrice(arg) {
   itemPrice = arg.price;
-  productPrice.textContent = itemPrice + ' ' + '\u20AC';
+  productPrice.textContent = (itemPrice / 100) + ' ' + '\u20AC';
 }
 
 // display item options
