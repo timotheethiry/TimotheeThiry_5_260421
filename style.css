@@ -383,4 +383,30 @@ a:visited {
   object-position: 10%;
 }
 
+.confirm {
+  margin: 3rem 0;
+}
+.confirm__icon {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  font-size: 200px;
+  color: #07bd2e;
+}
+.confirm__heading {
+  margin-top: 2rem;
+  font-size: 30px;
+  text-align: center;
+}
+.confirm__total {
+  margin-top: 1rem;
+  font-size: 22px;
+  text-align: center;
+}
+.confirm__id {
+  margin-top: 1rem;
+  font-size: 22px;
+  text-align: center;
+}
+
 /*# sourceMappingURL=style.css.map */

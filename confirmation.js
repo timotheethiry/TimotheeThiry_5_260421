@@ -7,8 +7,8 @@ function getOrder() {
 
 function displayConfirm() {
     getOrder();
-    document.getElementsByClassName('confirm_total')[0].textContent = "Total price of your order : " + confirmTotal + " \u20ac";
-    document.getElementsByClassName('confirm_id')[0].textContent = "You order id is : " + confirmId;
+    document.getElementsByClassName('confirm__total')[0].textContent = "Total price of your order : " + confirmTotal + " \u20ac";
+    document.getElementsByClassName('confirm__id')[0].textContent = "Your order id : " + confirmId;
 }
 
 displayConfirm();

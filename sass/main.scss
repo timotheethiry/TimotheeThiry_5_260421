@@ -8,6 +8,8 @@ $breakpoints: (
 );
 
 $prm-color: #868b8e;
+$snd-color: #FF9F1C;
+$g-color: #07bd2e;
 $w-color: #fff;
 
 $wd-cart: 16px;
@@ -119,7 +121,7 @@ a {
     min-width: $wd-cart;
     height: $hg-cart;
     border-radius: 10px;
-    background-color: #FF9F1C;
+    background-color: $snd-color;
     color: $w-color;
     position: relative;
     top: 8px;
@@ -440,7 +442,6 @@ a {
       font-size: 18px;
     }
   }
-  
 }
 
 .feat
@@ -479,5 +480,40 @@ a {
       object-position: 10%;
     }
   } 
-} 
+}
+
+
+
+// confirmation page
+
+.confirm
+{
+  margin: 3rem 0;
+  &__icon
+  {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    font-size: 200px;
+    color: $g-color;
+  }
+  &__heading
+  {
+    margin-top: 2rem;
+    font-size: 30px;
+    text-align: center;
+  }
+  &__total
+  {
+    margin-top: 1rem;
+    font-size: 22px;
+    text-align: center;
+  }
+  &__id
+  {
+    margin-top: 1rem;
+    font-size: 22px;
+    text-align: center;
+  }
+}
  
