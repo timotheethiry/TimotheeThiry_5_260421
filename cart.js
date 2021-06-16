@@ -235,6 +235,7 @@ function sendContact() {
     console.log(value);
     console.log(value.orderId);
     storeOrder(value);
+    location.href="confirmation.html";
   })
   .catch(function (error) {
     alert("The order has failed");
