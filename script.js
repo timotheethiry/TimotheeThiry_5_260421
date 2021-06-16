@@ -162,12 +162,12 @@ function checkCart() {
 }
 
 function cartInit() {
-  if(localStorage.getItem('cart')) {
+  if(localStorage.getItem('cart') == null || !localStorage.getItem('cart')) {
+    cart = [];
+    storeCart();
     checkCart();
   } else {
-    cart = [];
-    displayCartIcon();
-    storeCart();
+    checkCart();
   }
 }
 
