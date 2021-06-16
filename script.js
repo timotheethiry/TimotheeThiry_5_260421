@@ -109,8 +109,7 @@ displayItem();
 
 // cart functions
 
-let cart =[]; // warning variable globale
-
+let cart; // warning variable globale
 
 // get cart
 
@@ -162,7 +161,17 @@ function checkCart() {
   handleRemoveButton();
 }
 
-checkCart();
+function cartInit() {
+  if(localStorage.getItem('cart')) {
+    checkCart();
+  } else {
+    cart = [];
+    displayCartIcon();
+    storeCart();
+  }
+}
+
+cartInit();
 
 
 // handle remove button
