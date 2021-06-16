@@ -24,9 +24,6 @@ function storeCart() {
 
 // find names of items in the cart
 
-//let teddy = 0;
-//let i = 0;
-
 function findName(obj) {
   teddy = obj.find((item) => item._id == cart[i]);
   return teddy.name;
@@ -47,18 +44,17 @@ function findAllNames(arg) {
 // display cart items
 
 function displayCart() {
-    if (!cart.length) {
-        document.getElementById("cart-items").textContent = "is empty";
-    } else {
-        document.getElementById("cart-items").textContent = "has" + " " + cartNames.length + " " + "items" + "," + " " + cartNames.join(", ");
-    }
+  if (!cart.length) {
+    document.getElementById("cart-items").textContent = "is empty";
+  } else if (cart.length > 1) {
+    document.getElementById("cart-items").textContent = "has" + " " + cartNames.length + " " + "items" + "," + " " + cartNames.join(", ");
+  } else {
+    document.getElementById("cart-items").textContent = "has" + " " + cartNames.length + " " + "item" + "," + " " + cartNames.join(", ");
+  }
 }
 
 
 // find price, find total price, display total
-
-// let teddy = 0; declared before
-// let i = 0; declared before
 
 function findPrice(obj) {
   teddy = obj.find((item) => item._id == cart[i]);
@@ -68,12 +64,12 @@ function findPrice(obj) {
 let total;
 
 function findTotal(arg) {
-  total = 0;
+  sum = 0;
   for (i = 0; i < cart.length; i++) {
     findPrice(arg);
-    total = total + teddy.price;
+    sum = sum + teddy.price;
   }
-  return total;
+  return total = sum / 100;
 }
 
 function displayTotal() {
@@ -116,20 +112,6 @@ const contact = {
   email: ""
 };
 
-function getProductsArray() {
-  getCart();
-  products = cart;
-  return products;
-}
-
-function checkProductsArray() {
-  getProductsArray();
-  if (Array.isArray(products)) {
-    arrayIsValid = true;
-  } else {
-    arrayIsValid = false;
-  }
-}
 
 // security on submit button
 
@@ -193,6 +175,25 @@ document.getElementById("email").addEventListener("change", function (e) {
   checkForm();
 });
 
+
+// assign cart value to products array
+
+function getProductsArray() {
+  getCart();
+  products = cart;
+  return products;
+}
+
+function checkProductsArray() {
+  getProductsArray();
+  if (Array.isArray(products)) {
+    arrayIsValid = true;
+  } else {
+    arrayIsValid = false;
+  }
+}
+
+
 // check order validity
 
 function checkOrder() {
@@ -200,7 +201,6 @@ function checkOrder() {
     alert("Order has failed, please check out your informations");
     orderIsValid = false;
   } else {
-    //alert("Order is valid");
     orderIsValid = true;
   }
 }
