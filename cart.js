@@ -206,11 +206,12 @@ function checkOrder() {
 }
 
 
-// store order_id
+// store order id and total price for confirmation page
 
-function storeOrderId(arg) {
+function storeOrder(arg) {
   const orderId = arg.orderId;
-  localStorage.setItem("orderId", JSON.stringify(orderId));
+  localStorage.setItem("orderId", orderId);
+  localStorage.setItem("total", JSON.stringify(total));
 }
 
 
@@ -233,7 +234,7 @@ function sendContact() {
   .then(function (value) {
     console.log(value);
     console.log(value.orderId);
-    storeOrderId(value);
+    storeOrder(value);
   })
   .catch(function (error) {
     alert("The order has failed");
