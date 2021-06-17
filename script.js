@@ -1,12 +1,31 @@
-// -- product functions 
+/* -- product functions -- */
 
-// display item img
 
-const productImg = document.querySelectorAll(".pdt__preview");
-let itemImg;
+/* get page param -- extract the product id from the url parameters */
+
+function getPageParam() {
+  const urlParams = new URL(document.location).searchParams;
+  const pageParam = urlParams.get("id");
+  return pageParam;
+}
+
+const pageParam = getPageParam();
+
+
+/* get item url -- assign the api url and the product
+specific api url to a variable */
+
+const apiUrl = "http://localhost:3000/api/teddies/";
+const itemUrl = apiUrl + pageParam;
+
+
+/* display the product image -- assign the image url from
+the api, fit to the responsive rules, handles the off-center
+image of product 5beaaa8f1c9d440000a57d95 */
 
 function displayImg(arg) {
-  itemImg = arg.imageUrl;
+  const itemImg = arg.imageUrl;
+  const productImg = document.querySelectorAll(".pdt__preview");
   productImg[0].setAttribute("src", itemImg);
   productImg[1].setAttribute("src", itemImg);
   if (pageParam == "5beaaa8f1c9d440000a57d95") {
@@ -16,46 +35,40 @@ function displayImg(arg) {
   }
 }
 
-// display item name
 
-const productName = document.getElementById('product__name');
-let itemName;
+/* display item name */
 
 function displayName(arg) {
-  itemName = arg.name;
+  const itemName = arg.name;
+  const productName = document.getElementById('product__name');
   productName.textContent = itemName;
 }
 
-// display item price
 
-const productPrice = document.getElementById('product__price');
-let itemPrice;
+/* display item price */
 
 function displayPrice(arg) {
-  itemPrice = arg.price;
+  const itemPrice = arg.price;
+  const productPrice = document.getElementById('product__price');
   productPrice.textContent = (itemPrice / 100) + ' ' + '\u20AC';
 }
 
-// display item options
 
-//display item description
-
-const productDesc = document.getElementById('product__description');
-let itemDesc;
+/* display item description */
 
 function displayDesc(arg) {
-  itemDesc = arg.description;
+  const itemDesc = arg.description;
+  const productDesc = document.getElementById('product__description');
   productDesc.textContent = itemDesc;
 }
 
 
-// display item options
-
-const optionsList = document.getElementsByClassName("option-list");
+/* display item options and hide the unused options html elements */
 
 function displayOptions(arg) {
-  itemOptions = arg.colors;
-  for (i = 0; i < optionsList.length; i++) {
+  const itemOptions = arg.colors;
+  const optionsList = document.getElementsByClassName("option-list");
+  for (let i = 0, j = optionsList.length; i < j; i++) {
     optionsList[i].value = itemOptions[i];
     optionsList[i].textContent = itemOptions[i];
     if (optionsList[i].textContent == "") {
@@ -65,23 +78,7 @@ function displayOptions(arg) {
 }
 
 
-//get page param
-
-let urlParams;
-let pageParam;
-
-function getPageParam() {
-  urlParams = new URL(document.location).searchParams;
-  pageParam = urlParams.get("id");
-}
-
-//get item url
-
-getPageParam();
-let apiUrl = "http://localhost:3000/api/teddies/";
-let itemUrl = apiUrl + pageParam;
-
-// get item details
+/* request to the api the display the product on page load */
 
 function displayItem() {
   fetch(itemUrl)
@@ -92,13 +89,10 @@ function displayItem() {
     })
     .then(function (value) {
       displayImg(value);
-    displayName(value);
-    displayPrice(value);
-    displayDesc(value);
-    displayOptions(value);
-    })
-    .catch(function (error) {
-      // code erreur
+      displayName(value);
+      displayPrice(value);
+      displayDesc(value);
+      displayOptions(value);
     });
 }
 
@@ -107,30 +101,36 @@ displayItem();
 
 
 
-// cart functions
+/* -- cart functions -- */
 
-let cart; // warning variable globale
+const localStorageCartKey = "cart";
 
-// get cart
+/* get cart -- load the cart from the storage */ 
 
 function getCart() {
-  cart = JSON.parse(localStorage.getItem("cart"));
-  console.log(cart);
+  return JSON.parse(localStorage.getItem(localStorageCartKey)); 
 }
 
 
-// store cart
+/* store cart -- save the cart in the storage, we use
+an argument to pass the cart as a local variable */
 
-function storeCart() {
-  localStorage.setItem("cart", JSON.stringify(cart));
+function storeCart(arg) {
+  localStorage.setItem(localStorageCartKey, JSON.stringify(arg));
 }
 
 
-// handle cart length
+// -- cart icon functions
 
 const cartIconLength = document.querySelector('.header__cart-length');
 
+/* show how many items are in the cart -- we load the cart from storage,
+update the cart icon content, if the cart is empty we hide the cart icon, 
+otherwise we display it */
+
 function displayCartIcon() {
+  const cart = getCart();
+  cartIconLength.textContent = cart.length;
   if (!cart.length) {
     cartIconLength.style.visibility = 'hidden';
   } else {
@@ -138,7 +138,12 @@ function displayCartIcon() {
   }
 }
 
+
+/* modify the cart icon style to fit the content, according
+to number of items in the cart */
+
 function modifyCartIcon() {
+  const cart = getCart();
   if (cart.length < 10) {
     cartIconLength.style.borderRadius = "10px";
     cartIconLength.style.height = "$hg-cart";
@@ -153,18 +158,47 @@ function modifyCartIcon() {
   }
 }
 
+
+/* find product to remove - we search the first cart element
+that matches the product id in the url parameters */
+
+function getIndexOfElement() {
+  const cart = getCart();
+  const ind = cart.indexOf(pageParam);
+  return ind;
+}
+
+
+/* handle remove button -- if the cart is empty or the product 
+is not in the cart, then we disable the remove button */
+
+function handleRemoveButton() {
+  const cart = getCart();
+  const ind = getIndexOfElement();
+  if (!cart.length || ind == -1) {
+    document.getElementById('rmv-btn').setAttribute('disabled', true);
+  }
+}
+
+
+/* update the cart icon and remove button according to the number 
+of items in the cart */
+
 function checkCart() {
-  getCart();
-  cartIconLength.textContent = cart.length;
   displayCartIcon();
   modifyCartIcon();
   handleRemoveButton();
 }
 
+/* on page load, if a cart entry in the storage does not exist or returns
+an error, then create an empty cart entry, otherwise update the cart icon
+and remove button */
+
 function cartInit() {
-  if(localStorage.getItem('cart') == null || !localStorage.getItem('cart')) {
-    cart = [];
-    storeCart();
+  let cartStorage = localStorage.getItem(localStorageCartKey);
+  if(cartStorage == null || !cartStorage || cartStorage == undefined) {
+    let cart = [];
+    localStorage.setItem(localStorageCartKey, JSON.stringify(cart));
     checkCart();
   } else {
     checkCart();
@@ -174,50 +208,44 @@ function cartInit() {
 cartInit();
 
 
-// handle remove button
+/* event add product to cart - load the cart from the local storage, 
+push product id it into the cart, save the cart in the local storage, 
+enable the remove button and update the cart icon */
 
-
-function getIndexOfElement() {
-  return ind = cart.indexOf(pageParam);
-}
-
-function handleRemoveButton() {
-  getCart();
-  getIndexOfElement();
-  if (document.getElementById('rmv-btn') != null && !cart.length || ind == -1) {
-    document.getElementById('rmv-btn').setAttribute('disabled', true);
-  }
-}
-
-// remove 1 element
-
-function removeElement() {
-  getIndexOfElement();
-  if (ind > -1) {
-    cart.splice(ind, 1);
-  }
-}
-
-
-// event add to cart
-
-document.getElementById('add-btn').addEventListener('click', function() { 
-  getCart();
-  getPageParam();
+document.getElementById('add-btn').addEventListener('click', function() {
+  let cart = getCart();
+  console.log(cart);
   cart.push(pageParam);
-  storeCart();
+  console.log(cart);
+  storeCart(cart);
   document.getElementById('rmv-btn').removeAttribute('disabled');
   checkCart();
 });
 
 
-// event remove from cart
+/* remove product -- we delete only the first matching product and 
+return the cart value to be used by the storeCart function,
+if this product is in the cart then ind is greater or
+equal to 0, otherwise ind is equal to -1 and we do nothing */
 
-document.getElementById('rmv-btn').addEventListener('click', function(str){
-  getCart();
-  getPageParam();
-  removeElement();
-  storeCart();
-  handleRemoveButton();
+function removeElement() {
+  const ind = getIndexOfElement();
+  if (ind > -1) {
+    let cart = getCart();
+    console.log(cart);
+    cart.splice(ind, 1);
+    console.log(cart);
+    return cart;
+  }
+}
+
+
+/* event remove from cart - remove the first matching
+element from the cart, save the cart, update the cart icon 
+and the remove button */
+
+document.getElementById('rmv-btn').addEventListener('click', function(){
+  let cart = removeElement();
+  storeCart(cart);
   checkCart();
 });
