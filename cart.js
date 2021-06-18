@@ -1,4 +1,4 @@
-/* -- cart functions -- */
+// -- summary cart functions
 
 const localStorageCartKey = "cart";
 
@@ -8,6 +8,7 @@ function getCart() {
   return JSON.parse(localStorage.getItem(localStorageCartKey)); 
 }
 
+console.log(getCart());
 
 // find the name of every item in the cart and display it
 
@@ -24,6 +25,7 @@ function findAllNames(arg) {
     const teddyName = findName(arg, i);
     cartNames.push(teddyName);
   }
+  console.log(cartNames);
   return cartNames;
 }
 
@@ -65,12 +67,13 @@ function displayTotal(arg) {
   const total = findTotal(arg);
   document.getElementById("total-price").textContent = total + ' ' + '\u20AC';
   localStorage.setItem("total", JSON.stringify(total));
+  console.log(total);
 }
 
 
-// get oject from API
+// get data from API
 
-function getObject() {
+function getData() {
   fetch("http://localhost:3000/api/teddies")
   .then(function (result) {
     if (result.ok) {
@@ -82,11 +85,11 @@ function getObject() {
     displayTotal(data);
   })
   .catch(function (error) {
-console.log("Une erreur s'est produite");
+    console.log("Une erreur s'est produite");
   });
 }
 
-getObject();
+getData();
 
 
 
@@ -102,6 +105,7 @@ const contact = {
 };
 
 const products = getCart();
+console.log(products);
 
 
 // security on submit button
@@ -115,7 +119,8 @@ function disableSubmit(disabled) {
 }
 
 
-// check inputs values
+/* check inputs values, return a true/false signal about
+the inputs validity and handle the submit button accordingly */
 
 function checkForm() {
   const fn = document.getElementById("firstname").checkValidity();
@@ -131,10 +136,15 @@ function checkForm() {
     formIsValid = true;
     disableSubmit(false);
   }
+  console.log(contact);
   return formIsValid;
 }
 
 checkForm();
+
+
+/* event on the form input, update the contact object
+and check the input */
 
 document.getElementById("firstname").addEventListener("change", function (e) {
   contact.firstName = e.target.value;
@@ -157,7 +167,8 @@ document.getElementById("city").addEventListener("change", function (e) {
 });
 
 
-// check email data
+/* check the email input and notice to the user if the email
+is not valid */
 
 document.getElementById("email").addEventListener("change", function (e) {
   const regex = /[a-zA-Z0-9][a-zA-Z0-9_\-\.]*@[a-zA-Z0-9][a-zA-Z0-9_\-\.]*\.[a-zA-Z]{2,5}/;
@@ -170,17 +181,11 @@ document.getElementById("email").addEventListener("change", function (e) {
 });
 
 
-// assign cart value to products array
-
-/* function getProductsArray() {
-  const cart = getCart();
-  products = cart;
-  return products;
-} */
+/* assign the cart value to the products variable 
+and check if products is an array */
 
 function checkProductsArray() {
   const products = getCart();
-  console.log(products);
   let arrayIsValid;
   if (Array.isArray(products)) {
     arrayIsValid = true;
@@ -193,13 +198,12 @@ function checkProductsArray() {
 }
 
 
-// check order validity
+/* check order validity, both form and
+products array must be valid */
 
 function checkOrder() {
   const formIsValid = checkForm();
   const arrayIsValid = checkProductsArray();
-  console.log(formIsValid);
-  console.log(arrayIsValid);
   let orderIsValid;
   if (!formIsValid || !arrayIsValid) {
     alert("Order has failed, please check out your informations");
@@ -211,16 +215,19 @@ function checkOrder() {
 }
 
 
-// store order id and total price for confirmation page
+// store order id in the local storage
 
 function storeOrderId(arg) {
   const orderId = arg.orderId;
+  console.log(orderId);
   localStorage.setItem("orderId", orderId);
 }
 
-// API request to send the contact object
 
-function sendContact() {
+/* API request to send the contact object and
+the products array */
+
+function sendOrder() {
   fetch("http://localhost:3000/api/teddies/order", {
     method: "POST",
     headers: {
@@ -235,21 +242,23 @@ function sendContact() {
     }
   })
   .then(function (value) {
-    console.log(value);
-    //console.log(value.orderId);
     storeOrderId(value);
     location.href="confirmation.html";
   })
   .catch(function (error) {
-    alert("The order has failed");
+    alert("There was a server issue, the order has failed");
   });
 }
+
+
+/* event on the submit button, check the order
+validity and send the order accordingly */
 
 document.getElementById("submit").addEventListener("click", function (e) {
   e.preventDefault();
   const orderIsValid = checkOrder();
   console.log(orderIsValid);
   if (orderIsValid == true) {
-    sendContact();
+    sendOrder();
   }
 });
