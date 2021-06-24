@@ -1,0 +1,49 @@
+.footer {
+    background-color: $w-color;
+    border-top: solid 2px $prm-color;
+    color: darken($color: $prm-color, $amount: 15%);
+    font-size: 14px;
+    text-align: center;
+    padding: 0.5rem;
+    @include sm {
+      padding: 1rem;
+    }
+    &__content.row 
+    {
+      margin: 0 auto;
+      max-width: 700px;
+      justify-content: space-around; // display flex from row class BS
+    }
+    &__brand
+    {
+      margin-top: 1rem;
+    }
+    &__p
+    {
+      margin: 0;
+    }
+    &__socials
+    {
+      margin-top: 0.5rem;
+      font-size: 25px;
+      display: flex;
+      justify-content: space-around;
+    }
+    &__links
+    {
+      margin-top: 1rem; 
+    }
+    &__heading
+    {
+      text-transform: uppercase;
+      margin: 0 0 0.8rem;
+      font-size: 14px;
+    }
+    &__ul
+    {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 0;
+      line-height: 1.4;
+    }
+  }

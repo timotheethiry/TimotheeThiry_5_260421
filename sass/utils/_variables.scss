@@ -1,0 +1,16 @@
+$breakpoints: (
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+);
+
+$prm-color: #868b8e;
+$snd-color: #FF9F1C;
+$g-color: #07bd2e;
+$w-color: #fff;
+
+//element displaying the number of items in the cart
+
+$wd-cart: 16px;
+$hg-cart: $wd-cart;

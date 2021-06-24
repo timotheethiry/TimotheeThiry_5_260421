@@ -1,0 +1,65 @@
+.view
+{
+  text-align: center;
+  margin: 1rem auto;
+  max-width: 800px;
+  @include sm {
+    margin: 1.5rem auto;
+  }
+  @include md
+  {
+    margin: 2rem auto;
+  }
+  @include xl
+  {
+    max-width: 1170px;
+    margin: 2.5rem auto;
+  }
+  &.row
+  {
+    @include md
+    {
+      margin-right: auto;
+      margin-left: auto;
+    }
+  }
+  &__item
+  {
+    margin: 10px;
+    @include md
+    {
+      margin: 1.5rem 0;
+    }
+    @include lg
+    {
+     &:nth-of-type(4n)
+      {
+        margin-left: auto;
+      }
+      &:nth-of-type(5n)
+      {
+        margin-right: auto;
+      } 
+    } 
+  }
+  &__name
+  {
+    color: black;
+    margin: 0;
+  }
+  &__img
+  {
+    width: 320px;
+    height: 320px;
+    object-fit: cover;
+    box-shadow: 1px 2px 5px lightgray;
+    &--left
+    {
+      object-position: left;
+    }
+    &--center
+    {
+      object-position: 10%;
+    }
+  }
+}

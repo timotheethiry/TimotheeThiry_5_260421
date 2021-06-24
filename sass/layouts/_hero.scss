@@ -1,0 +1,39 @@
+.hero
+{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom: solid 2px $prm-color;
+  margin: 2rem auto auto;
+  padding: 0 1.5rem;
+  @include sm
+  {
+    margin: 2.5rem auto auto
+  }
+  &.row // border length
+  {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  &__heading
+  {
+    text-transform: uppercase;
+    font-size: 24px;
+    margin-top: 0;
+    @include md
+    {
+      font-size: 28px;
+    }
+  }
+  &__p
+  {
+    font-size: 18px;
+    margin: 0 auto 2rem;
+    max-width: 480px;
+    @include sm
+    {
+      margin: 0 auto 2.5rem; 
+    }
+  }
+}
